@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @article.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @article.body %>
+</p>
+
+
+<h3>Napis commentar</h3>
+
+<%= form_for ([@article, @article.comments.build]) do |f| %>
+  <div>
+    <%=f.label :user %>
+    <%=f.text_field :user %>
+  </div>
+  <div>
+    <%=f.label :body %>
+    <%=f.text_area :body %>
+  </div>
+  <%=f.submit%>
+<% end%>
+
+
+<h3>Comments:</h3>
+
+<%= render :partial => 'comments/comment', :locals => {:comments =>  @comments}  %>
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

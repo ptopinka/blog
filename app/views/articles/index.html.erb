@@ -1,0 +1,16 @@
+<h1>My first blog in RoR</h1>
+
+
+<% @articles.each do |article| %>
+  <div>
+    <h3><%= article.title %></h3>
+    <p><%= article.body %></p>
+    <span><%= link_to 'Show', article %></span>
+    <span><%= link_to 'Edit', edit_article_path(article) %></span>
+    <span><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></span>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to 'New Article', new_article_path %>
